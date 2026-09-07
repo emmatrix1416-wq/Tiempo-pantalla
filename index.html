@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiempo de pantalla</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f4f5f7;
+    --card: #ffffff;
+    --text: #1c1e21;
+    --muted: #5f6368;
+    --accent: #4f6df5;
+    --accent-dark: #3c54c9;
+    --border: #dde1e6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --card: #1f2227;
+      --text: #eceef1;
+      --muted: #9aa0a8;
+      --accent: #6c86ff;
+      --accent-dark: #536bd9;
+      --border: #33373e;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 32px 16px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  }
+  h1 {
+    font-size: 1.4rem;
+    margin: 0 0 4px;
+  }
+  p.subtitle {
+    color: var(--muted);
+    margin: 0 0 24px;
+    font-size: 0.92rem;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+  }
+  input[type="number"] {
+    width: 90px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.95rem;
+    text-align: right;
+  }
+  input[type="number"]:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+  button {
+    margin-top: 8px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:hover { background: var(--accent-dark); }
+  .resultado {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    text-align: center;
+    display: none;
+  }
+  .resultado.visible { display: block; }
+  .resultado .valor {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .resultado .detalle {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+  .error {
+    color: #e0483e;
+    font-size: 0.85rem;
+    margin-top: 8px;
+    display: none;
+  }
+  .error.visible { display: block; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Promedio de tiempo de pantalla</h1>
+    <p class="subtitle">Ingresa las horas que pasaste en el celular cada día de la semana.</p>
+    <form id="form-horas">
+      <label>Lunes <input type="number" step="0.1" min="0" max="24" id="horas_lunes" required></label>
+      <label>Martes <input type="number" step="0.1" min="0" max="24" id="horas_martes" required></label>
+      <label>Miércoles <input type="number" step="0.1" min="0" max="24" id="horas_miercoles" required></label>
+      <label>Jueves <input type="number" step="0.1" min="0" max="24" id="horas_jueves" required></label>
+      <label>Viernes <input type="number" step="0.1" min="0" max="24" id="horas_viernes" required></label>
+      <label>Sábado <input type="number" step="0.1" min="0" max="24" id="horas_sabado" required></label>
+      <label>Domingo <input type="number" step="0.1" min="0" max="24" id="horas_domingo" required></label>
+      <button type="submit">Calcular promedio</button>
+      <p class="error" id="error">Por favor ingresa un número válido (0-24) en cada día.</p>
+    </form>
+    <div class="resultado" id="resultado">
+      <div class="valor" id="valor-promedio"></div>
+      <div class="detalle" id="detalle-suma"></div>
+    </div>
+  </div>
+
+  <script>
+    const dias = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+
+    document.getElementById("form-horas").addEventListener("submit", function (evento) {
+      evento.preventDefault();
+
+      const horas = dias.map((dia) => parseFloat(document.getElementById("horas_" + dia).value));
+      const errorEl = document.getElementById("error");
+      const valido = horas.every((h) => !isNaN(h) && h >= 0 && h <= 24);
+
+      if (!valido) {
+        errorEl.classList.add("visible");
+        document.getElementById("resultado").classList.remove("visible");
+        return;
+      }
+      errorEl.classList.remove("visible");
+
+      const suma = horas.reduce((acumulado, h) => acumulado + h, 0);
+      const promedio = suma / 7;
+
+      document.getElementById("valor-promedio").textContent = promedio.toFixed(2) + " horas";
+      document.getElementById("detalle-suma").textContent = "Suma semanal: " + suma.toFixed(2) + " horas";
+      document.getElementById("resultado").classList.add("visible");
+    });
+  </script>
+</body>
+</html>
