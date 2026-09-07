@@ -1,0 +1,520 @@
+<title>Tiempo de pantalla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EDF1F7;
+    --surface: #FFFFFF;
+    --surface-2: #F5F7FB;
+    --text: #182233;
+    --muted: #5B6478;
+    --border: #D7DEE8;
+    --accent: #3557D6;
+    --accent-ink: #24408F;
+    --accent-soft: #E4EAFC;
+    --warn: #C97A24;
+    --warn-soft: #FBEBD6;
+    --shadow: 0 12px 32px -18px rgba(24, 34, 51, 0.35);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #10141C;
+      --surface: #171D28;
+      --surface-2: #1D2431;
+      --text: #E7EBF3;
+      --muted: #929AAD;
+      --border: #2B3242;
+      --accent: #7C97FF;
+      --accent-ink: #C7D2FF;
+      --accent-soft: #22293F;
+      --warn: #F0B754;
+      --warn-soft: #3A2E19;
+      --shadow: 0 12px 32px -18px rgba(0, 0, 0, 0.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10141C;
+    --surface: #171D28;
+    --surface-2: #1D2431;
+    --text: #E7EBF3;
+    --muted: #929AAD;
+    --border: #2B3242;
+    --accent: #7C97FF;
+    --accent-ink: #C7D2FF;
+    --accent-soft: #22293F;
+    --warn: #F0B754;
+    --warn-soft: #3A2E19;
+    --shadow: 0 12px 32px -18px rgba(0, 0, 0, 0.6);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: clamp(20px, 4vw, 48px) 16px 56px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .page { width: 100%; max-width: 920px; }
+
+  header {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    margin: 0;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  header p {
+    color: var(--muted);
+    margin: 2px 0 0;
+    max-width: 60ch;
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+  }
+
+  .form-panel { padding: 22px; }
+
+  .panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+    gap: 8px;
+  }
+
+  .panel-head h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .example-tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .dias {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .dia-row {
+    display: grid;
+    grid-template-columns: 34px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dia-row:last-child { border-bottom: none; }
+
+  .dia-inicial {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-size: 0.82rem;
+  }
+
+  .dia-nombre {
+    font-size: 0.94rem;
+    color: var(--text);
+  }
+
+  .input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  input[type="number"] {
+    width: 68px;
+    padding: 7px 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-2);
+    color: var(--text);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.92rem;
+    text-align: right;
+  }
+  input[type="number"]:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  .unidad {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    min-width: 16px;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  button {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 10px 14px;
+    border-radius: 9px;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    flex: 1;
+  }
+  .btn-primary:hover { filter: brightness(1.05); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border-color: var(--border);
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--muted); }
+
+  .chart-panel {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .resumen {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .metric .label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .metric .valor {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.15;
+  }
+  .metric .valor span { font-size: 1rem; color: var(--muted); font-family: "IBM Plex Sans", sans-serif; font-weight: 500; }
+
+  .estado {
+    font-size: 0.85rem;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    align-self: flex-start;
+    font-weight: 500;
+  }
+  .estado.warn { background: var(--warn-soft); color: var(--warn); }
+
+  svg { width: 100%; height: auto; display: block; }
+  .grid-line { stroke: var(--border); stroke-width: 1; }
+  .axis-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9px;
+    fill: var(--muted);
+  }
+  .bar { fill: var(--accent); }
+  .bar.warn { fill: var(--warn); }
+  .bar-value {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    fill: var(--text);
+    text-anchor: middle;
+  }
+  .dia-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    fill: var(--muted);
+    text-anchor: middle;
+  }
+  .avg-line { stroke: var(--accent-ink); stroke-width: 1.4; stroke-dasharray: 4 3; }
+  .avg-tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9px;
+    fill: var(--accent-ink);
+  }
+
+  .incompleto {
+    color: var(--muted);
+    font-size: 0.88rem;
+    padding: 10px 12px;
+    background: var(--surface-2);
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+  }
+
+  footer {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    text-align: center;
+  }
+</style>
+
+<div class="page">
+  <header>
+    <span class="eyebrow">Promedio semanal</span>
+    <h1>Tiempo de pantalla</h1>
+    <p>Ingresa las horas que pasas en el celular cada día. La suma y el promedio diario se calculan al instante, igual que en un reporte de tiempo de uso.</p>
+  </header>
+
+  <div class="layout">
+    <section class="panel form-panel">
+      <div class="panel-head">
+        <h2>Horas por día</h2>
+        <span class="example-tag" id="tag-estado">datos de ejemplo</span>
+      </div>
+      <div class="dias" id="dias"></div>
+      <div class="form-actions">
+        <button class="btn-primary" id="btn-limpiar">Borrar todo</button>
+        <button class="btn-ghost" id="btn-reset">Restablecer ejemplo</button>
+      </div>
+    </section>
+
+    <section class="panel chart-panel">
+      <div class="resumen">
+        <div class="metric">
+          <div class="label">Promedio diario</div>
+          <div class="valor" id="valor-promedio">—</div>
+        </div>
+        <div class="metric">
+          <div class="label">Suma semanal</div>
+          <div class="valor" id="valor-suma">—</div>
+        </div>
+        <span class="estado" id="estado-badge"></span>
+      </div>
+      <div id="chart-holder"></div>
+      <div class="incompleto" id="incompleto" hidden>Completa las horas de los 7 días para ver el promedio.</div>
+    </section>
+  </div>
+
+  <footer>Los valores se calculan en tu navegador; si vuelves a esta página, tus horas quedan guardadas solo en este dispositivo.</footer>
+</div>
+
+<script>
+  const DIAS = [
+    { id: "lunes", inicial: "L", nombre: "Lunes", ejemplo: 6.5 },
+    { id: "martes", inicial: "M", nombre: "Martes", ejemplo: 7 },
+    { id: "miercoles", inicial: "X", nombre: "Miércoles", ejemplo: 6 },
+    { id: "jueves", inicial: "J", nombre: "Jueves", ejemplo: 7.5 },
+    { id: "viernes", inicial: "V", nombre: "Viernes", ejemplo: 8 },
+    { id: "sabado", inicial: "S", nombre: "Sábado", ejemplo: 7 },
+    { id: "domingo", inicial: "D", nombre: "Domingo", ejemplo: 6.5 },
+  ];
+
+  const STORAGE_KEY = "tiempo-pantalla-horas";
+  const diasEl = document.getElementById("dias");
+
+  DIAS.forEach((dia) => {
+    const row = document.createElement("div");
+    row.className = "dia-row";
+    row.innerHTML = `
+      <span class="dia-inicial">${dia.inicial}</span>
+      <span class="dia-nombre">${dia.nombre}</span>
+      <span class="input-wrap">
+        <input type="number" step="0.5" min="0" max="24" id="horas_${dia.id}" value="${dia.ejemplo}">
+        <span class="unidad">h</span>
+      </span>`;
+    diasEl.appendChild(row);
+  });
+
+  function leerGuardado() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+
+  function guardar(valores) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(valores)); } catch (e) {}
+  }
+
+  const guardado = leerGuardado();
+  let usandoEjemplo = !guardado;
+  if (guardado) {
+    DIAS.forEach((dia) => {
+      if (guardado[dia.id] !== undefined) {
+        document.getElementById("horas_" + dia.id).value = guardado[dia.id];
+      }
+    });
+  }
+
+  const tagEstado = document.getElementById("tag-estado");
+  function actualizarTag() {
+    tagEstado.textContent = usandoEjemplo ? "datos de ejemplo" : "tus datos";
+  }
+  actualizarTag();
+
+  function valores() {
+    return DIAS.map((dia) => document.getElementById("horas_" + dia.id).value.trim());
+  }
+
+  function dibujar() {
+    const crudos = valores();
+    const completos = crudos.every((v) => v !== "" && !isNaN(parseFloat(v)));
+    const incompletoEl = document.getElementById("incompleto");
+    const holder = document.getElementById("chart-holder");
+    const promedioEl = document.getElementById("valor-promedio");
+    const sumaEl = document.getElementById("valor-suma");
+    const badge = document.getElementById("estado-badge");
+
+    if (!completos) {
+      incompletoEl.hidden = false;
+      holder.innerHTML = "";
+      promedioEl.textContent = "—";
+      sumaEl.textContent = "—";
+      badge.textContent = "";
+      return;
+    }
+    incompletoEl.hidden = true;
+
+    const horas = crudos.map((v) => Math.max(0, Math.min(24, parseFloat(v))));
+    const suma = horas.reduce((a, b) => a + b, 0);
+    const promedio = suma / 7;
+
+    promedioEl.innerHTML = promedio.toFixed(2) + '<span> h / día</span>';
+    sumaEl.innerHTML = suma.toFixed(1) + '<span> h</span>';
+
+    const nivel = promedio >= 7 ? "warn" : "";
+    badge.className = "estado" + (nivel ? " warn" : "");
+    badge.textContent = nivel ? "Promedio alto (≥ 7 h)" : "Dentro de un rango moderado";
+
+    const maxVal = Math.max(...horas, promedio);
+    const topeEje = Math.max(4, Math.ceil(maxVal / 2) * 2);
+
+    const w = 640, h = 260;
+    const padL = 26, padR = 14, padT = 16, padB = 26;
+    const plotW = w - padL - padR, plotH = h - padT - padB;
+    const barGap = 14;
+    const barW = (plotW - barGap * (DIAS.length - 1)) / DIAS.length;
+
+    const yFor = (v) => padT + plotH - (v / topeEje) * plotH;
+
+    let gridLines = "";
+    let axisLabels = "";
+    const steps = 4;
+    for (let i = 0; i <= steps; i++) {
+      const v = (topeEje / steps) * i;
+      const y = yFor(v);
+      gridLines += `<line class="grid-line" x1="${padL}" y1="${y}" x2="${w - padR}" y2="${y}"/>`;
+      axisLabels += `<text class="axis-label" x="2" y="${y + 3}">${v}h</text>`;
+    }
+
+    let bars = "";
+    DIAS.forEach((dia, i) => {
+      const val = horas[i];
+      const x = padL + i * (barW + barGap);
+      const y = yFor(val);
+      const barH = padT + plotH - y;
+      const esAlto = val >= 7;
+      bars += `<rect class="bar${esAlto ? " warn" : ""}" x="${x}" y="${y}" width="${barW}" height="${Math.max(barH, 1)}" rx="4"/>`;
+      bars += `<text class="bar-value" x="${x + barW / 2}" y="${y - 6}">${val}</text>`;
+      bars += `<text class="dia-label" x="${x + barW / 2}" y="${h - 8}">${dia.inicial}</text>`;
+    });
+
+    const yAvg = yFor(promedio);
+    const avgLine = `<line class="avg-line" x1="${padL}" y1="${yAvg}" x2="${w - padR}" y2="${yAvg}"/>
+      <text class="avg-tag" x="${w - padR - 66}" y="${yAvg - 4}">promedio ${promedio.toFixed(2)}h</text>`;
+
+    holder.innerHTML = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Horas de uso del celular por día">
+      ${gridLines}${axisLabels}${bars}${avgLine}
+    </svg>`;
+
+    guardar(Object.fromEntries(DIAS.map((dia, i) => [dia.id, crudos[i]])));
+  }
+
+  diasEl.addEventListener("input", (e) => {
+    if (e.target.tagName === "INPUT") {
+      usandoEjemplo = false;
+      actualizarTag();
+      dibujar();
+    }
+  });
+
+  document.getElementById("btn-limpiar").addEventListener("click", () => {
+    DIAS.forEach((dia) => { document.getElementById("horas_" + dia.id).value = ""; });
+    usandoEjemplo = false;
+    actualizarTag();
+    dibujar();
+    document.getElementById("horas_lunes").focus();
+  });
+
+  document.getElementById("btn-reset").addEventListener("click", () => {
+    DIAS.forEach((dia) => { document.getElementById("horas_" + dia.id).value = dia.ejemplo; });
+    usandoEjemplo = true;
+    actualizarTag();
+    dibujar();
+  });
+
+  dibujar();
+</script>
