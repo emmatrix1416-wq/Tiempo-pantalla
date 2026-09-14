@@ -85,8 +85,10 @@ degradado azul y plata. Cambiar un valor ahí lo actualiza en todo el sitio.
   igual con la tipografía del sistema.
 - Logo e imágenes incrustados como SVG dentro del HTML: cargan al instante y
   se ven nítidos en cualquier pantalla.
-- Animaciones sutiles al hacer scroll con `IntersectionObserver`, desactivadas
-  automáticamente si el sistema pide menos movimiento.
+- Funciona **aunque el navegador no ejecute JavaScript** (por ejemplo, al abrirlo
+  desde el visor de archivos del celular): el contenido siempre se ve y el menú
+  abre con CSS. El JavaScript solo agrega las animaciones al hacer scroll.
+- Las animaciones se desactivan solas si el sistema pide menos movimiento.
 - Etiquetas Open Graph para que se vea bien al compartir el enlace por WhatsApp.
 
 ---
