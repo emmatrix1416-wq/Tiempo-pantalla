@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560" role="img" aria-label="Vista previa de proyecto: Tienda local — Vitrina de productos">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1c"/>
+      <stop offset="100%" stop-color="#060913"/>
+    </linearGradient>
+    <linearGradient id="ac4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7fd4ff"/>
+      <stop offset="100%" stop-color="#1a4fe0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="560" fill="url(#bg4)"/>
+  <circle cx="660" cy="110" r="170" fill="url(#ac4)" opacity="0.16"/>
+  <!-- ventana de navegador -->
+  <rect x="60" y="70" width="680" height="440" rx="18" fill="#0d1526" stroke="#20304d" stroke-width="2"/>
+  <rect x="60" y="70" width="680" height="46" rx="18" fill="#121c31"/>
+  <rect x="60" y="100" width="680" height="16" fill="#121c31"/>
+  <circle cx="92" cy="93" r="6" fill="#3c4a66"/>
+  <circle cx="112" cy="93" r="6" fill="#3c4a66"/>
+  <circle cx="132" cy="93" r="6" fill="#3c4a66"/>
+  <rect x="156" y="85" width="240" height="16" rx="8" fill="#1b2740"/>
+  <!-- contenido -->
+  <rect x="96" y="152" width="300" height="26" rx="8" fill="url(#ac4)"/>
+  <rect x="96" y="196" width="420" height="12" rx="6" fill="#2a3a59"/>
+  <rect x="96" y="220" width="360" height="12" rx="6" fill="#222f49"/>
+  <rect x="96" y="258" width="180" height="42" rx="21" fill="url(#ac4)"/>
+  <rect x="96" y="340" width="180" height="110" rx="14" fill="#141f36" stroke="#22314e" stroke-width="2"/>
+  <rect x="300" y="340" width="180" height="110" rx="14" fill="#141f36" stroke="#22314e" stroke-width="2"/>
+  <rect x="504" y="340" width="180" height="110" rx="14" fill="#141f36" stroke="#22314e" stroke-width="2"/>
+  <rect x="520" y="152" width="164" height="150" rx="14" fill="#101a2e" stroke="#22314e" stroke-width="2"/>
+  <circle cx="602" cy="212" r="34" fill="url(#ac4)" opacity="0.65"/>
+  </svg>
