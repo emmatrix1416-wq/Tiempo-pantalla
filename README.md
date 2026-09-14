@@ -23,11 +23,34 @@ ni servidor.
 
 ## Cómo publicarlo en internet
 
-Basta con subir `index.html`:
+### GitHub Pages (el repositorio ya está listo)
 
-- **GitHub Pages**: Settings → Pages → Branch `main` → carpeta `/root`.
-- **Netlify / Vercel**: arrastra la carpeta a su panel.
-- **Hosting propio**: sube todo por FTP a la carpeta pública.
+El sitio ya está en la rama `main`. Solo falta encenderlo:
+
+1. Entra a **Settings** (Configuración) del repositorio, arriba a la derecha.
+2. En el menú de la izquierda busca **Pages**.
+3. En *Build and deployment* → *Source*, elige **Deploy from a branch**.
+4. En *Branch* elige **`main`** y la carpeta **`/ (root)`**. Dale **Save**.
+
+En dos o tres minutos tu página queda pública en:
+
+```
+https://emmatrix1416-wq.github.io/Tiempo-pantalla/
+```
+
+Cada vez que cambies algo en `main`, la página se actualiza sola.
+
+### Otras opciones
+
+- **Netlify Drop**: entra a `app.netlify.com/drop` y arrastra el `index.html`.
+  Te da un enlace público al instante, sin crear cuenta.
+- **Hosting propio**: sube los archivos por FTP a la carpeta pública.
+
+### Dominio propio
+
+Cuando quieras algo como `mexaweb.com` en vez de la dirección larga, compra el
+dominio y conéctalo desde **Settings → Pages → Custom domain**. Es el mismo
+sitio, solo cambia la dirección.
 
 ## Cómo cambiar cosas
 
