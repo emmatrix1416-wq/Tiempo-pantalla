@@ -6,10 +6,15 @@ y diseño de logos profesionales para negocios locales en México 🇲🇽
 ## Archivos
 
 ```
-index.html              El sitio completo (HTML + CSS + JS en un solo archivo)
-assets/logo.svg         Logo Mexa_WEB (M plateada + W azul con órbita)
-assets/proyecto-1..4.svg  Imágenes de ejemplo del portafolio (reemplazables)
+index.html              El sitio COMPLETO: HTML, CSS, JS, logo e imágenes
+assets/logo.svg         Copia suelta del logo (para redes, tarjetas, rótulos)
+assets/proyecto-1..4.svg  Copias sueltas de las imágenes de ejemplo
 ```
+
+**`index.html` funciona solo.** El logo y las imágenes van dentro del archivo,
+así que puedes mandarlo por WhatsApp o correo, o abrirlo desde cualquier
+carpeta, y se verá completo. La carpeta `assets/` es solo una copia de respaldo
+por si necesitas el logo por separado; el sitio no depende de ella.
 
 ## Cómo verlo
 
@@ -18,8 +23,7 @@ ni servidor.
 
 ## Cómo publicarlo en internet
 
-Cualquiera de estas opciones funciona subiendo la carpeta completa
-(`index.html` + la carpeta `assets`):
+Basta con subir `index.html`:
 
 - **GitHub Pages**: Settings → Pages → Branch `main` → carpeta `/root`.
 - **Netlify / Vercel**: arrastra la carpeta a su panel.
@@ -49,13 +53,24 @@ título, precio y lista de lo que incluye.
 
 ### Fotos del portafolio
 
-Las cuatro imágenes de `assets/` son provisionales. Para poner capturas reales:
+Las cuatro imágenes son dibujos provisionales que están escritos dentro del
+HTML. Para poner capturas reales de tus proyectos:
 
-1. Guarda tu imagen en `assets/` (por ejemplo `assets/mi-proyecto.jpg`).
-2. En la sección `<!-- PORTAFOLIO -->` cambia el `src` de la imagen y su `alt`.
-3. Actualiza el nombre y la descripción que van debajo.
+1. Guarda tu captura junto al `index.html`, por ejemplo `mi-proyecto.jpg`.
+2. En la sección `<!-- PORTAFOLIO -->`, cada proyecto empieza con un bloque
+   largo que va de `<svg class="proyecto-img"` hasta su `</svg>`.
+   Borra ese bloque completo y en su lugar escribe:
+
+   ```html
+   <img src="mi-proyecto.jpg" alt="Página web de mi cliente" loading="lazy">
+   ```
+
+3. Debajo, cambia el nombre del negocio y la descripción.
 
 Medida recomendada: **800 × 560 px** (proporción 10:7).
+
+> Ojo: si usas imágenes como archivos aparte, tienes que subirlas junto con el
+> `index.html`. Mientras uses las provisionales, el archivo sigue funcionando solo.
 
 ### Colores
 
@@ -65,7 +80,11 @@ degradado azul y plata. Cambiar un valor ahí lo actualiza en todo el sitio.
 ## Detalles técnicos
 
 - Responsive: diseñado primero para celular.
-- Sin dependencias ni frameworks; solo se carga la tipografía Sora desde Google Fonts.
+- Sin dependencias ni frameworks. El único archivo que se descarga de internet
+  es la tipografía Sora de Google Fonts; si no hay conexión, el sitio se ve
+  igual con la tipografía del sistema.
+- Logo e imágenes incrustados como SVG dentro del HTML: cargan al instante y
+  se ven nítidos en cualquier pantalla.
 - Animaciones sutiles al hacer scroll con `IntersectionObserver`, desactivadas
   automáticamente si el sistema pide menos movimiento.
 - Etiquetas Open Graph para que se vea bien al compartir el enlace por WhatsApp.
