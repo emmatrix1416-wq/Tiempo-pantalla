@@ -1,5 +1,7 @@
 # Mexa_WEB — Páginas web a tu medida
 
+**En línea: https://mexaweb.netlify.app**
+
 Sitio web de una sola página para **Mexa_WEB**: creación de páginas web modernas
 y diseño de logos profesionales para negocios locales en México 🇲🇽
 
@@ -23,7 +25,15 @@ ni servidor.
 
 ## Cómo publicarlo en internet
 
-### GitHub Pages (el repositorio ya está listo)
+### Netlify (es lo que está en uso)
+
+El sitio está publicado en **https://mexaweb.netlify.app**, conectado a este
+repositorio. Cada cambio que llegue a la rama `main` se publica solo en un par
+de minutos; no hay que hacer nada más.
+
+Panel de control: app.netlify.com → proyecto **mexaweb**.
+
+### GitHub Pages (alternativa, sin usar)
 
 El sitio ya está en la rama `main`. Solo falta encenderlo:
 
