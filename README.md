@@ -9,9 +9,25 @@ y diseño de logos profesionales para negocios locales en México 🇲🇽
 
 ```
 index.html              El sitio COMPLETO: HTML, CSS, JS, logo e imágenes
+404.html                Página de error, con el mismo diseño del sitio
 assets/logo.svg         Copia suelta del logo (para redes, tarjetas, rótulos)
+assets/og.png           La imagen que se ve al compartir el enlace (1200×630)
 assets/proyecto-1..4.svg  Copias sueltas de las imágenes de ejemplo
+robots.txt              Le dice a Google que puede entrar
+sitemap.xml             La lista de páginas, para Google
+_headers                Ajustes de seguridad y caché que aplica Netlify
 ```
+
+### La imagen al compartir el enlace
+
+`assets/og.png` es lo que aparece cuando mandas mexaweb.netlify.app por
+WhatsApp, Facebook o Instagram. Tiene que ser **PNG o JPG** (WhatsApp no
+muestra SVG ni WebP) y la dirección dentro del `index.html` tiene que ser
+**completa**, empezando por `https://`.
+
+> Si algún día cambias de dirección (por ejemplo a `mexaweb.com`), busca
+> `mexaweb.netlify.app` en `index.html`, `robots.txt` y `sitemap.xml` y
+> reemplázala por todas las veces que aparezca (son 11 en total).
 
 **`index.html` funciona solo.** El logo y las imágenes van dentro del archivo,
 así que puedes mandarlo por WhatsApp o correo, o abrirlo desde cualquier

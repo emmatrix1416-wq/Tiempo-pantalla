@@ -1,0 +1,20 @@
+# Cabeceras que aplica Netlify a cada archivo que sirve.
+# (El equivalente al .htaccess de un hosting tipo Apache.)
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+
+# La página siempre fresca: los cambios se ven al instante.
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# El logo y las imágenes cambian poco: se guardan en el navegador.
+/assets/*
+  Cache-Control: public, max-age=604800
