@@ -1,0 +1,29 @@
+{
+  "_comment": "Optional pre-authorization for conectar-hostinger-v3. Copy these entries into your ~/.claude/settings.json under permissions.allow. Covers the four capabilities (connect, build, images, publish). Scoped to this skill's scripts, the Hostinger connection commands, and a few safe helpers — nothing destructive.",
+
+  "permissions": {
+    "allow": [
+      "Bash(python *conectar-hostinger-v3/scripts/*.py*)",
+      "Bash(python3 *conectar-hostinger-v3/scripts/*.py*)",
+      "Bash(bash *conectar-hostinger-v3/scripts/*.sh*)",
+      "Bash(node *conectar-hostinger-v3/scripts/*.mjs*)",
+      "Bash(powershell *conectar-hostinger-v3/scripts/*.ps1*)",
+
+      "Bash(claude mcp add *)",
+      "Bash(claude mcp list*)",
+      "Bash(npm install -g hostinger-api-mcp*)",
+      "Bash(hostinger-*-mcp *)",
+      "Bash(winget install OpenJS.NodeJS*)",
+
+      "Bash(mkdir -p *)",
+      "Bash(ls *)",
+      "Bash(cp *)",
+      "Bash(grep *)",
+      "Bash(command -v *)",
+      "Bash(which *)",
+
+      "Bash(python -m http.server *)",
+      "Bash(python3 -m http.server *)"
+    ]
+  }
+}
