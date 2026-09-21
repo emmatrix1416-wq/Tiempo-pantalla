@@ -10,7 +10,10 @@ y diseño de logos profesionales para negocios locales en México 🇲🇽
 ```
 index.html              El sitio COMPLETO: HTML, CSS, JS, logo e imágenes
 404.html                Página de error, con el mismo diseño del sitio
-assets/logo.svg         Copia suelta del logo (para redes, tarjetas, rótulos)
+assets/logo-mw.webp     El monograma solo (cabecera, pie, icono)
+assets/logo-mexaweb.png Logo completo con el nombre, fondo transparente
+                        (para redes, tarjetas y rótulos)
+assets/favicon.png      El icono de la pestaña del navegador
 assets/og.png           La imagen que se ve al compartir el enlace (1200×630)
 assets/proyecto-1..4.svg  Copias sueltas de las imágenes de ejemplo
 assets/demo-*.webp      Las capturas de las cuatro demos, para el portafolio
