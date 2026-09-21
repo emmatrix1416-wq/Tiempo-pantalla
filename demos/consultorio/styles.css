@@ -176,3 +176,15 @@ details p{margin:0;padding:0 24px 22px;color:var(--ink-soft)}
   .acciones{flex-direction:column;align-items:stretch}
   .pasos{grid-template-columns:1fr}
 }
+
+/* ---- botón de volver ---- */
+.barra-izq{display:flex;align-items:center;gap:14px;min-width:0}
+.volver{
+  flex:none;display:inline-flex;align-items:center;justify-content:center;
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.9);color:var(--accent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  transition:background .2s ease,color .2s ease,transform .2s ease;
+}
+.volver svg{width:21px;height:21px;margin-right:2px}
+.volver:hover{background:var(--accent);color:#fff;transform:translateX(-2px)}

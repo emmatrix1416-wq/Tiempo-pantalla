@@ -58,4 +58,20 @@
     setTimeout(function(){ if (!reacciono) mostrarTodo(); }, 3000);
   });
 
+
+  /* Volver: si llegaron desde la página principal, el historial los deja
+     exactamente donde estaban. Si no, el enlace normal hace su trabajo. */
+  safe('volver', function(){
+    var volver = document.getElementById('volver');
+    if (!volver) return;
+    volver.addEventListener('click', function(e){
+      if (!document.referrer || history.length < 2) return;
+      try {
+        if (new URL(document.referrer).origin === location.origin){
+          e.preventDefault();
+          history.back();
+        }
+      } catch (err) { /* si algo falla, se sigue el enlace */ }
+    });
+  });
 })();

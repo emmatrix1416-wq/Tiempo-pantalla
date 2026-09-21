@@ -149,3 +149,14 @@ a:focus-visible,button:focus-visible,label:focus-visible,input:focus-visible,sel
   .acciones{flex-direction:column;align-items:stretch}
   .tarjeta img{aspect-ratio:3/2}
 }
+
+/* ---- botón de volver ---- */
+.barra-izq{display:flex;align-items:center;gap:14px;min-width:0}
+.volver{
+  flex:none;display:inline-flex;align-items:center;justify-content:center;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--paper);border:1px solid var(--line);color:var(--ink);
+  transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;
+}
+.volver svg{width:21px;height:21px;margin-right:2px}
+.volver:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateX(-2px)}

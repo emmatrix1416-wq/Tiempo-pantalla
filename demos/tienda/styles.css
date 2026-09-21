@@ -136,3 +136,18 @@ cite{font-family:var(--sans);font-style:normal;font-size:.78rem;font-weight:600;
   .pie-legal{text-align:left}
   .producto img{aspect-ratio:3/2}
 }
+
+/* ---- botón de volver ---- */
+.barra-izq{display:flex;align-items:center;gap:12px;min-width:0}
+.volver{
+  flex:none;display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;
+  background:var(--paper);border:1px solid var(--line);color:var(--ink);
+  transition:background .2s ease,color .2s ease,transform .2s ease;
+}
+.volver svg{width:20px;height:20px;margin-right:2px}
+.volver:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateX(-2px)}
+/* En el móvil se oculta el texto de la edición, pero el botón se queda */
+@media (max-width:860px){
+  .barra-izq{gap:0}
+}
