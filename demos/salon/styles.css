@@ -1,0 +1,151 @@
+/* ============================================================
+   Raíz Estudio — Arquetipo 01 Editorial Light Cream
+   ============================================================ */
+:root{
+  --bg:#f4efe6; --bg-2:#ece0cf; --paper:#fffdf9;
+  --ink:#241f1d; --ink-soft:#3c3532; --ink-mute:#7d726c;
+  --accent:#a8546b; --accent-2:#8d4459; --moss:#4a5d3a;
+  --line:rgba(36,31,29,.14);
+  --max:1160px;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:17px;line-height:1.75;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+ul{margin:0;padding:0;list-style:none}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;letter-spacing:-.02em;margin:0 0 .5em}
+h1{font-size:clamp(2.7rem,6.4vw,4.6rem)}
+h2{font-size:clamp(1.9rem,4.2vw,3rem)}
+h3{font-size:clamp(1.2rem,2.2vw,1.45rem)}
+em{font-style:italic;color:var(--accent)}
+p{margin:0 0 1.1em}
+a:focus-visible,button:focus-visible,label:focus-visible,input:focus-visible,select:focus-visible{
+  outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.saltar{position:absolute;left:16px;top:-100px;z-index:200;padding:12px 20px;
+  background:var(--accent);color:#fff;font-weight:600;border-radius:0 0 10px 10px;transition:top .18s}
+.saltar:focus{top:0}
+.caja{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:22px}
+.seccion{padding-block:clamp(64px,9vw,120px);scroll-margin-top:90px}
+.seccion-alt{background:var(--bg-2)}
+.num{font-family:var(--serif);font-size:.95rem;font-weight:600;color:var(--accent);
+  letter-spacing:.08em;margin-bottom:12px}
+
+.cintillo{background:var(--ink);color:var(--bg);font-size:.82rem;font-weight:500;
+  display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;align-items:center;
+  padding:9px 18px;text-align:center}
+.cintillo a{text-decoration:underline;text-underline-offset:3px;color:#f0b8c6}
+
+.barra{position:sticky;top:0;z-index:80;background:rgba(244,239,230,.86);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+.barra.activo{border-bottom-color:var(--line);background:rgba(244,239,230,.97)}
+.barra-in{display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding-block:16px;position:relative}
+.marca{font-family:var(--serif);font-size:1.3rem;font-weight:600}
+.nav{display:flex;align-items:center;gap:30px;font-size:.94rem;font-weight:500}
+.nav a{color:var(--ink-soft);transition:color .2s}
+.nav a:hover{color:var(--accent)}
+.nav-cta{border:1px solid var(--accent);color:var(--accent)!important;padding:9px 20px;border-radius:999px}
+.nav-cta:hover{background:var(--accent);color:#fff!important}
+.menu-check,.menu-btn{display:none}
+
+/* ---- hero ---- */
+.hero{padding-block:clamp(48px,7vw,96px)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);align-items:center}
+.kicker{font-size:.76rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-mute);margin-bottom:20px}
+.hero-sub{color:var(--ink-soft);font-size:1.08rem;max-width:480px}
+.hero-pie{margin-top:26px;font-size:.9rem;color:var(--ink-mute)}
+.acciones{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);
+  font-weight:600;font-size:1rem;padding:15px 32px;border-radius:999px;border:1px solid transparent;
+  cursor:pointer;transition:transform .2s,background .2s,border-color .2s,color .2s}
+.btn-lleno{background:var(--accent);color:#fff}
+.btn-lleno:hover{background:var(--accent-2);transform:translateY(-2px)}
+.btn-linea{border-color:var(--line);color:var(--ink)}
+.btn-linea:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.hero-fig{margin:0;border-radius:200px 200px 14px 14px;overflow:hidden;
+  box-shadow:0 40px 80px -40px rgba(60,40,45,.45)}
+.hero-fig img{width:100%;aspect-ratio:4/3.4;object-fit:cover}
+
+/* ---- manifiesto ---- */
+.manifiesto{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,70px);align-items:start;
+  max-width:900px}
+.manifiesto .num{margin:0}
+.grande{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.45}
+.manifiesto p:not(.grande):not(.num){color:var(--ink-soft)}
+
+/* ---- tarjetas ---- */
+.titulo-sec{max-width:620px;margin-bottom:48px}
+.entradilla{color:var(--ink-soft)}
+.tarjetas{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.tarjeta{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s}
+.tarjeta:hover{transform:translateY(-8px);box-shadow:0 30px 60px -30px rgba(168,84,107,.5)}
+.tarjeta img{aspect-ratio:4/5;object-fit:cover;width:100%;transition:transform .5s,filter .5s}
+.tarjeta:hover img{transform:scale(1.05);filter:saturate(1.12)}
+.tarjeta-txt{padding:26px 24px 28px}
+.tarjeta-txt p{color:var(--ink-soft);font-size:.96rem}
+.meta{font-family:var(--serif);color:var(--accent)!important;font-size:1rem;margin:0}
+
+/* ---- precios ---- */
+.lista-precios{max-width:760px;border-top:1px solid var(--line)}
+.lista-precios li{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;align-items:baseline;
+  border-bottom:1px solid var(--line);padding:18px 0}
+.lista-precios span{color:var(--ink-soft)}
+.lista-precios b{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--accent)}
+
+/* ---- cita ---- */
+.cta{background:var(--bg-2)}
+.cta-caja{max-width:560px;margin-inline:auto;text-align:center}
+.cta-caja p{color:var(--ink-soft)}
+.form{display:grid;gap:18px;margin-top:32px;text-align:left}
+.campo label{display:block;font-size:.78rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-mute);margin-bottom:8px}
+.campo input,.campo select{width:100%;font-family:inherit;font-size:1rem;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.campo input:hover,.campo select:hover{border-color:var(--accent)}
+.form-aviso{margin:0;min-height:1.5em;font-size:.95rem;color:var(--moss)}
+.form-aviso.error{color:#b3352b}
+
+/* ---- pie ---- */
+.pie{border-top:1px solid var(--line);padding-block:44px}
+.pie-in{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+.marca-pie{font-size:1.2rem;margin:0}
+.pie-nota,.pie-legal{color:var(--ink-mute);font-size:.88rem;margin:4px 0 0}
+.pie-legal{max-width:420px;text-align:right}
+.pie-legal a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+
+@media (prefers-reduced-motion:no-preference){
+  .js .rev{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+  .js .rev.visible{opacity:1;transform:none}
+}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:38px}
+  .hero-fig{order:-1;border-radius:160px 160px 14px 14px}
+  .manifiesto{grid-template-columns:1fr;gap:16px}
+  .tarjetas{grid-template-columns:1fr}
+  .pie-legal{text-align:left}
+  .menu-btn{display:flex;align-items:center;justify-content:center;width:44px;height:44px;
+    border:1px solid var(--line);border-radius:8px;cursor:pointer}
+  .menu-btn span,.menu-btn span::before,.menu-btn span::after{
+    content:'';display:block;width:20px;height:2px;background:var(--ink);position:relative}
+  .menu-btn span::before{position:absolute;top:-6px}
+  .menu-btn span::after{position:absolute;top:6px}
+  .nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;
+    background:rgba(244,239,230,.99);border-block:1px solid var(--line);padding:10px 22px 20px;display:none}
+  .menu-check:checked ~ .nav{display:flex}
+  .nav a{padding:13px 0;border-bottom:1px solid var(--line)}
+  .nav-cta{text-align:center;margin-top:14px;border-bottom:none}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .btn{width:100%}
+  .acciones{flex-direction:column;align-items:stretch}
+  .tarjeta img{aspect-ratio:3/2}
+}

@@ -13,10 +13,42 @@ index.html              El sitio COMPLETO: HTML, CSS, JS, logo e imágenes
 assets/logo.svg         Copia suelta del logo (para redes, tarjetas, rótulos)
 assets/og.png           La imagen que se ve al compartir el enlace (1200×630)
 assets/proyecto-1..4.svg  Copias sueltas de las imágenes de ejemplo
+assets/demo-*.webp      Las capturas de las cuatro demos, para el portafolio
+demos/restaurante/      Demo: Maíz y Brasa (cocina mexicana)
+demos/salon/            Demo: Raíz Estudio (salón de belleza)
+demos/consultorio/      Demo: Clínica Vértice (medicina general)
+demos/tienda/           Demo: La Surtida (abarrotes)
 robots.txt              Le dice a Google que puede entrar
 sitemap.xml             La lista de páginas, para Google
 _headers                Ajustes de seguridad y caché que aplica Netlify
+_redirects              Esconde la carpeta de herramientas internas
 ```
+
+### Las cuatro demos
+
+Cada carpeta de `demos/` es un sitio completo e independiente, con su propio
+`index.html`, `styles.css`, `main.js` e imágenes. Están pensadas para enseñar
+a un cliente cómo se vería su giro, y todas llevan arriba una franja que dice
+que son demostraciones y un enlace de vuelta a tu página.
+
+Los cuatro usan un estilo visual distinto a propósito, para que no parezcan la
+misma plantilla repintada:
+
+| Demo | Giro | Estilo |
+|---|---|---|
+| Maíz y Brasa | Restaurante | Oscuro cálido, serif editorial |
+| Raíz Estudio | Salón de belleza | Crema, serif en cursiva |
+| Clínica Vértice | Consultorio | Pastel con cristal esmerilado |
+| La Surtida | Tienda | Papel de revista, serif de titular |
+
+**Las imágenes son ilustraciones hechas a medida, no fotos.** Si en algún
+momento quieres fotos reales en las demos, hay dos caminos: mandarme fotos
+tuyas, o generarlas con inteligencia artificial (eso cuesta unos dólares y
+hace falta una clave de OpenAI).
+
+> **Ojo:** desde que hay demos, el sitio ya **no es un archivo suelto**. El
+> `index.html` sigue abriendo solo, pero para que los botones "Abrir demo"
+> funcionen tienes que subir la carpeta completa, no solo el `index.html`.
 
 ### La imagen al compartir el enlace
 
@@ -29,10 +61,10 @@ muestra SVG ni WebP) y la dirección dentro del `index.html` tiene que ser
 > `mexaweb.netlify.app` en `index.html`, `robots.txt` y `sitemap.xml` y
 > reemplázala por todas las veces que aparezca (son 11 en total).
 
-**`index.html` funciona solo.** El logo y las imágenes van dentro del archivo,
-así que puedes mandarlo por WhatsApp o correo, o abrirlo desde cualquier
-carpeta, y se verá completo. La carpeta `assets/` es solo una copia de respaldo
-por si necesitas el logo por separado; el sitio no depende de ella.
+**El `index.html` se ve completo por sí solo.** El logo y los dibujos van
+dentro del archivo. Lo único que necesita de fuera son las capturas del
+portafolio (`assets/demo-*.webp`) y las carpetas de `demos/`, que es a donde
+llevan los botones "Abrir demo".
 
 ## Cómo verlo
 
