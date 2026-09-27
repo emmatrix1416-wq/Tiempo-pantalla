@@ -189,7 +189,7 @@ details p{margin:0;padding:0 24px 22px;color:var(--ink-soft)}
 .volver svg{width:21px;height:21px;margin-right:2px}
 .volver:hover{background:var(--accent);color:#fff;transform:translateX(-2px)}
 
-/* Color del texto seleccionado. Sin esto manda el lila que trae el
-   navegador por defecto, que no pinta nada en una paleta azul. */
-::selection{background:rgba(43,140,255,.34);color:#fff;text-shadow:none}
-::-moz-selection{background:rgba(43,140,255,.34);color:#fff;text-shadow:none}
+/* El recuadro del texto seleccionado se quita: al arrastrar el dedo o el
+   ratón por la página aparecía un bloque de color que ensuciaba el diseño. */
+::selection{background:transparent;color:inherit;text-shadow:none}
+::-moz-selection{background:transparent;color:inherit;text-shadow:none}

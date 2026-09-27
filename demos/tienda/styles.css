@@ -152,7 +152,7 @@ cite{font-family:var(--sans);font-style:normal;font-size:.78rem;font-weight:600;
   .barra-izq{gap:0}
 }
 
-/* Color del texto seleccionado. Sin esto manda el lila que trae el
-   navegador por defecto, que no pinta nada en una paleta azul. */
-::selection{background:rgba(43,140,255,.34);color:#fff;text-shadow:none}
-::-moz-selection{background:rgba(43,140,255,.34);color:#fff;text-shadow:none}
+/* El recuadro del texto seleccionado se quita: al arrastrar el dedo o el
+   ratón por la página aparecía un bloque de color que ensuciaba el diseño. */
+::selection{background:transparent;color:inherit;text-shadow:none}
+::-moz-selection{background:transparent;color:inherit;text-shadow:none}
