@@ -152,7 +152,9 @@ cite{font-family:var(--sans);font-style:normal;font-size:.78rem;font-weight:600;
   .barra-izq{gap:0}
 }
 
-/* El recuadro del texto seleccionado se quita: al arrastrar el dedo o el
-   ratón por la página aparecía un bloque de color que ensuciaba el diseño. */
-::selection{background:transparent;color:inherit;text-shadow:none}
-::-moz-selection{background:transparent;color:inherit;text-shadow:none}
+/* Nada de recuadros al arrastrar: el texto no se selecciona y, por si
+   acaso, la selección se pinta transparente. */
+body{-webkit-user-select:none;-moz-user-select:none;user-select:none;
+     -webkit-tap-highlight-color:transparent}
+::selection{background-color:transparent;color:inherit;text-shadow:none}
+::-moz-selection{background-color:transparent;color:inherit;text-shadow:none}

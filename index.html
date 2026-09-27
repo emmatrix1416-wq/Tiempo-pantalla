@@ -616,10 +616,19 @@ section{position:relative;padding-block:clamp(60px,9vw,110px);scroll-margin-top:
    Tiene que ir al final: la abreviatura `background:` reinicia esta propiedad. */
 .btn,.nav-cta,.proyecto-link,.plan-cinta{background-origin:border-box}
 
-/* El recuadro del texto seleccionado se quita: al arrastrar el dedo o el
-   ratón por la página aparecía un bloque de color que ensuciaba el diseño. */
-::selection{background:transparent;color:inherit;text-shadow:none}
-::-moz-selection{background:transparent;color:inherit;text-shadow:none}
+/* Nada de recuadros al arrastrar. Se ataca por dos vías porque solo
+   recolorear la selección no bastaba:
+   1) el texto deja de poder seleccionarse, así no hay nada que pintar;
+   2) y si aun así algo se selecciona, se pinta transparente.
+   Los datos de contacto y los precios sí se pueden copiar. */
+body{-webkit-user-select:none;-moz-user-select:none;user-select:none;
+     -webkit-tap-highlight-color:transparent}
+.contacto,.contacto *,.persona-dato,.aviso,.plan-precio,.extra-precio,
+.marca-nombre,.footer-legal{
+  -webkit-user-select:text;-moz-user-select:text;user-select:text;
+}
+::selection{background-color:transparent;color:inherit;text-shadow:none}
+::-moz-selection{background-color:transparent;color:inherit;text-shadow:none}
 </style>
 </head>
 <body>
