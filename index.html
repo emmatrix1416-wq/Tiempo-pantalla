@@ -361,10 +361,14 @@ section{position:relative;padding-block:clamp(60px,9vw,110px);scroll-margin-top:
    planes, que es donde la elevación sí comunica jerarquía. */
 .beneficios{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
 .beneficio{
-  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
+  display:grid;grid-template-columns:auto 1fr;column-gap:18px;row-gap:0;align-items:start;
   padding:30px 0;border-top:1px solid var(--borde);
   background:none;border-radius:0;box-shadow:none;
 }
+/* El icono ocupa la columna izquierda en ambas filas; el título y el texto
+   se apilan en la derecha. Sin esto los tres hijos se reparten mal. */
+.beneficio-icono{grid-column:1;grid-row:1 / 3}
+.beneficio h3,.beneficio p{grid-column:2}
 .beneficio:nth-child(odd){padding-right:44px}
 .beneficio:nth-child(even){padding-left:44px;border-left:1px solid var(--borde)}
 .beneficio:hover{transform:none;box-shadow:none;border-color:var(--borde)}
