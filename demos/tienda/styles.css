@@ -151,3 +151,8 @@ cite{font-family:var(--sans);font-style:normal;font-size:.78rem;font-weight:600;
 @media (max-width:860px){
   .barra-izq{gap:0}
 }
+
+/* Color del texto seleccionado. Sin esto manda el lila que trae el
+   navegador por defecto, que no pinta nada en una paleta azul. */
+::selection{background:rgba(43,140,255,.34);color:#fff;text-shadow:none}
+::-moz-selection{background:rgba(43,140,255,.34);color:#fff;text-shadow:none}

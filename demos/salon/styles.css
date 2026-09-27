@@ -160,3 +160,8 @@ a:focus-visible,button:focus-visible,label:focus-visible,input:focus-visible,sel
 }
 .volver svg{width:21px;height:21px;margin-right:2px}
 .volver:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateX(-2px)}
+
+/* Color del texto seleccionado. Sin esto manda el lila que trae el
+   navegador por defecto, que no pinta nada en una paleta azul. */
+::selection{background:rgba(43,140,255,.34);color:#fff;text-shadow:none}
+::-moz-selection{background:rgba(43,140,255,.34);color:#fff;text-shadow:none}

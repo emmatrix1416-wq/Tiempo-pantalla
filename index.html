@@ -615,6 +615,11 @@ section{position:relative;padding-block:clamp(60px,9vw,110px);scroll-margin-top:
    un hilo azul claro en el canto. Midiéndolo hasta el borde, desaparece.
    Tiene que ir al final: la abreviatura `background:` reinicia esta propiedad. */
 .btn,.nav-cta,.proyecto-link,.plan-cinta{background-origin:border-box}
+
+/* Color del texto seleccionado. Sin esto manda el lila que trae el
+   navegador por defecto, que no pinta nada en una paleta azul. */
+::selection{background:rgba(43,140,255,.34);color:#fff;text-shadow:none}
+::-moz-selection{background:rgba(43,140,255,.34);color:#fff;text-shadow:none}
 </style>
 </head>
 <body>
