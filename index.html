@@ -211,12 +211,32 @@ section{position:relative;padding-block:clamp(60px,9vw,110px);scroll-margin-top:
 /* ============================ HEADER ============================ */
 .sitio-header{
   position:sticky;top:0;z-index:60;
-  background:rgba(5,7,13,.72);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid transparent;
-  transition:border-color .25s ease,background .25s ease;
+  background:transparent;border-bottom:none;
 }
-.sitio-header.activo{border-bottom-color:var(--borde);background:rgba(5,7,13,.92)}
+/* Velo con desvanecido. La banda de color sólido cortaba de golpe el
+   resplandor del hero y dejaba una línea dura de lado a lado. La máscara
+   apaga a la vez el fondo y el desenfoque, así que el borde ya no existe:
+   la barra se funde con lo que tiene debajo. */
+.sitio-header::before{
+  content:"";position:absolute;inset:0 0 -52px;z-index:-1;pointer-events:none;
+  background:rgba(5,7,13,.82);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 56%,rgba(0,0,0,.55) 78%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 0,#000 56%,rgba(0,0,0,.55) 78%,transparent 100%);
+  transition:background .3s ease;
+}
+/* Filete azul que nace y muere en los extremos: un borde buscado, no un corte */
+.sitio-header::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(143,224,255,.3) 16%,rgba(143,224,255,.42) 50%,rgba(143,224,255,.3) 84%,transparent);
+  opacity:0;transition:opacity .3s ease;
+}
+/* Al bajar, el velo se cierra y aparece el filete */
+.sitio-header.activo::before{
+  inset:0;background:rgba(5,7,13,.95);
+  -webkit-mask-image:none;mask-image:none;
+}
+.sitio-header.activo::after{opacity:1}
 .barra{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:70px}
 .marca{display:flex;align-items:center;gap:11px}
 .marca .marca-logo{height:38px;width:auto;flex:none}
