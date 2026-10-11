@@ -411,19 +411,42 @@ section{position:relative;padding-block:clamp(60px,9vw,110px);scroll-margin-top:
 .beneficio h3{font-size:1.08rem;margin-bottom:8px}
 .beneficio p{font-size:.94rem;margin:0}
 
-/* ============================ PROCESO ============================ */
-.pasos{counter-reset:paso;display:grid;gap:20px;grid-template-columns:repeat(4,1fr)}
-.paso{
-  position:relative;padding:30px 22px 26px;
-  background:linear-gradient(180deg,var(--panel),var(--negro-2));
-  border:1px solid var(--borde);border-radius:var(--radio);
+/* ============================ GRÁFICA ============================ */
+.gfc{margin:0;border:1px solid var(--borde);border-radius:var(--radio);
+  background:linear-gradient(180deg,rgba(10,16,28,.72),var(--negro-2));padding:26px 26px 22px}
+.gfc-cuerpo{display:grid;grid-template-columns:auto 1fr;gap:14px}
+.gfc-eje{position:relative;width:58px;height:330px}
+.gfc-eje span{position:absolute;right:0;transform:translateY(-50%);
+  font-size:.78rem;font-weight:600;color:var(--gris);font-variant-numeric:tabular-nums}
+.gfc-plot{position:relative;height:330px;overflow:visible}
+.gfc-plot svg{width:100%;height:100%;display:block;overflow:visible}
+.gfc-cruceta{position:absolute;top:-6px;bottom:0;width:0;
+  border-left:1px dashed rgba(143,224,255,.5)}
+.gfc-punto{position:absolute;width:13px;height:13px;border-radius:50%;
+  background:var(--azul-claro);border:2px solid var(--negro);transform:translate(-50%,-50%);
+  box-shadow:0 0 0 5px rgba(143,224,255,.2)}
+.gfc-globo{position:absolute;display:flex;transform:translate(-100%,-50%);
+  border-radius:9px;overflow:hidden;white-space:nowrap;box-shadow:0 10px 26px rgba(0,0,0,.5)}
+.gfc-globo b{background:#141b29;color:#eaf1fb;font-size:.88rem;font-weight:800;
+  padding:9px 14px;font-variant-numeric:tabular-nums}
+.gfc-globo i{background:#1f6dff;color:#fff;font-style:normal;font-size:.88rem;
+  font-weight:800;padding:9px 13px}
+.gfc-anios{display:flex;justify-content:space-between;margin:14px 0 0 72px}
+.gfc-anios span{font-size:.82rem;font-weight:600;color:var(--gris)}
+.gfc-anios span:last-child{color:var(--azul-claro)}
+.gfc-nota{margin-top:26px;font-size:.98rem;color:var(--plata);line-height:1.6;
+  padding-left:18px;border-left:3px solid var(--azul)}
+.gfc-nota b{color:var(--blanco);font-weight:700}
+.gfc-fuente{margin-top:18px;font-size:.8rem;color:var(--gris);line-height:1.6}
+@media (max-width:680px){
+  .gfc{padding:18px 16px 16px}
+  .gfc-eje{width:42px;height:250px}
+  .gfc-eje span{font-size:.68rem}
+  .gfc-plot{height:250px}
+  .gfc-anios{margin-left:56px}
+  .gfc-anios span{font-size:.7rem}
+  .gfc-globo b,.gfc-globo i{font-size:.74rem;padding:7px 10px}
 }
-.paso-num{
-  display:grid;place-items:center;width:48px;height:48px;border-radius:14px;margin-bottom:16px;
-  font-weight:800;font-size:1.15rem;color:#03070f;background:var(--grad-azul);
-}
-.paso h3{font-size:1.05rem;margin-bottom:8px}
-.paso p{font-size:.93rem;color:var(--plata);margin:0}
 
 /* ============================ SOBRE MÍ ============================ */
 .sobre-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(28px,4vw,56px);align-items:start}
@@ -568,7 +591,6 @@ section{position:relative;padding-block:clamp(60px,9vw,110px);scroll-margin-top:
   .hero-sub{max-width:none;margin-inline:auto}
   .hero .acciones,.hero .insignias{justify-content:center}
   .hero-arte{order:-1}
-  .pasos{grid-template-columns:repeat(2,1fr)}
   .rejilla-4{grid-template-columns:repeat(2,1fr)}
   .rejilla-3{grid-template-columns:1fr}
   .plan.destacado{order:-1}
@@ -602,7 +624,6 @@ section{position:relative;padding-block:clamp(60px,9vw,110px);scroll-margin-top:
   .wa-flotante .wa-texto{display:none}
   .etiqueta{font-size:.72rem;letter-spacing:.1em;padding:7px 14px}
   .rejilla-2,.rejilla-4,.galeria{grid-template-columns:1fr}
-  .pasos{grid-template-columns:1fr}
   .tarjeta{padding:26px 22px}
   .btn{width:100%}
   .acciones{flex-direction:column;align-items:stretch}
@@ -653,7 +674,7 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none;
     <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
       <a href="#servicios">Servicios</a>
       <a href="#planes">Precios</a>
-      <a href="#proceso">Proceso</a>
+      <a href="#mercado">El mercado</a>
       <a href="#sobre-mi">Sobre mí</a>
       <a href="#portafolio">Ejemplos</a>
       <a class="nav-cta" href="https://wa.me/525544728735?text=Hola%20Mexa_WEB%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20p%C3%A1gina%20web" target="_blank" rel="noopener">
@@ -875,37 +896,50 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none;
     </div>
   </section>
 
-  <!-- ====================== PROCESO ====================== -->
-  <section id="proceso">
+  <!-- ====================== GRÁFICA DEL MERCADO ====================== -->
+  <section id="mercado">
     <div class="contenedor">
       <div class="centrado revelar">
-        <span class="etiqueta">Proceso de trabajo</span>
-        <h2>Cuatro pasos y <span class="degradado">listo</span></h2>
-        <p class="entrada">Así de simple es tener tu negocio en internet. Yo te guío en cada paso.</p>
+        <span class="etiqueta">Por qué conviene ya</span>
+        <h2>Lo que los mexicanos <span class="degradado">compran en línea</span></h2>
+        <p class="entrada">Ventas del comercio minorista por internet, en miles de millones de pesos.</p>
       </div>
 
-      <div class="pasos" style="margin-top:44px">
-        <article class="paso revelar">
-          <div class="paso-num">1</div>
-          <h3>Me cuentas tu idea</h3>
-          <p>Por WhatsApp me dices a qué se dedica tu negocio y qué te gustaría mostrar. No necesitas saber nada técnico.</p>
-        </article>
-        <article class="paso revelar">
-          <div class="paso-num">2</div>
-          <h3>Te muestro una propuesta</h3>
-          <p>Preparo un diseño con tus colores, textos e imágenes para que veas cómo quedaría tu página o tu logo.</p>
-        </article>
-        <article class="paso revelar">
-          <div class="paso-num">3</div>
-          <h3>Ajustamos detalles</h3>
-          <p>Me dices qué cambiar: colores, fotos, textos o secciones. Lo afinamos hasta que quede como lo imaginas.</p>
-        </article>
-        <article class="paso revelar">
-          <div class="paso-num">4</div>
-          <h3>Entrega final</h3>
-          <p>Publico tu página y te entrego todos tus archivos. Te explico cómo compartirla con tus clientes.</p>
-        </article>
-      </div>
+      <figure class="gfc revelar" style="margin-top:44px">
+        <div class="gfc-cuerpo">
+          <div class="gfc-eje" aria-hidden="true"><span style="top:0%">1,000</span><span style="top:20%">800</span><span style="top:40%">600</span><span style="top:60%">400</span><span style="top:80%">200</span><span style="top:100%">0</span></div>
+          <div class="gfc-plot">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img"
+                 aria-label="Las ventas por internet en México pasaron de 316 mil millones de pesos en 2020 a 941 mil millones en 2025.">
+              <defs><linearGradient id="gfcRell" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#4ba3ff" stop-opacity=".38"/>
+                <stop offset="100%" stop-color="#4ba3ff" stop-opacity="0"/>
+              </linearGradient></defs>
+              <line x1="0" y1="0" x2="100" y2="0" stroke="rgba(143,224,255,.09)" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="0" y1="20" x2="100" y2="20" stroke="rgba(143,224,255,.09)" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="0" y1="40" x2="100" y2="40" stroke="rgba(143,224,255,.09)" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="0" y1="60" x2="100" y2="60" stroke="rgba(143,224,255,.09)" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="0" y1="80" x2="100" y2="80" stroke="rgba(143,224,255,.09)" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="0" y1="100" x2="100" y2="100" stroke="rgba(143,224,255,.09)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <path d="M0.00,68.40 L20.00,59.87 L40.00,47.20 L60.00,34.17 L80.00,21.03 L100.00,5.90 L100,100 L0,100 Z" fill="url(#gfcRell)"/>
+              <path d="M0.00,68.40 L20.00,59.87 L40.00,47.20 L60.00,34.17 L80.00,21.03 L100.00,5.90" fill="none" stroke="#6fc0ff" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <div class="gfc-cruceta" style="left:100.0%"></div>
+            <div class="gfc-punto" style="left:100.0%;top:5.9%"></div>
+            <div class="gfc-globo" style="left:calc(100.0% - 16px);top:5.9%">
+              <b>941,000 mdp</b><i>2025</i>
+            </div>
+          </div>
+        </div>
+        <div class="gfc-anios"><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span></div>
+
+        <figcaption>
+          <p class="gfc-nota">
+            En 2025, <b>17.7 de cada 100 pesos</b> del comercio minorista en México se
+            gastaron por internet. En 2020 eran cerca de 9.
+          </p>
+          <p class="gfc-fuente">
+            Fuente: AMVO, Estudio de Venta Online (ediciones 2021 a 2026). Comercio
+            minorista B2C; no incluye servicios, viajes ni venta entre empresas.
+          </p>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
