@@ -68,7 +68,7 @@
         "price": "3500", "priceCurrency": "MXN", "availability": "https://schema.org/InStock",
         "itemOffered": { "@type": "Service", "name": "Página web de 3 a 6 páginas", "serviceType": "Diseño y desarrollo web" } },
       { "@type": "Offer", "name": "Plan Prioritario — Web a la Medida con actualizaciones mensuales",
-        "price": "4000", "priceCurrency": "MXN", "availability": "https://schema.org/InStock",
+        "price": "4000", "priceCurrency": "MXN", "priceValidUntil": "2026-11-02", "availability": "https://schema.org/InStock",
         "itemOffered": { "@type": "Service", "name": "Página web a la medida con mantenimiento mensual", "serviceType": "Diseño web y mantenimiento" } },
       { "@type": "Offer", "name": "Diseño de logo",
         "price": "500", "priceCurrency": "MXN", "availability": "https://schema.org/InStock",
@@ -380,8 +380,14 @@ section{position:relative;padding-block:clamp(60px,9vw,110px);scroll-margin-top:
   line-height:1.35;text-align:center;
   padding:9px 20px;border-radius:15px;
 }
-/* el destacado respira más arriba porque su cinta ocupa dos renglones */
-.plan.destacado{padding-top:46px}
+/* las tres llevan cinta, así que todas respiran arriba por igual */
+.tarjeta.plan{padding-top:56px}
+/* Cinta discreta para los planes que no son el recomendado: dice para quién
+   es cada uno sin competir con el destacado. */
+.plan-cinta.suave{
+  background:var(--negro-2);color:var(--azul-claro);
+  border:1px solid var(--borde-fuerte);box-shadow:none;
+}
 /* Precio anterior tachado. Va fuera del degradado: si estuviera dentro
    heredaría el relleno transparente y no se vería gris. */
 .precio-antes{
@@ -799,6 +805,7 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none;
       <div class="rejilla rejilla-3 planes" style="margin-top:52px">
 
         <article class="tarjeta plan revelar">
+          <span class="plan-cinta suave">El más recomendado para anunciar locales o productos nuevos</span>
           <p class="plan-nombre">Plan Sencillo</p>
           <h3 class="plan-titulo">Página Sencilla<br>(una sola página)</h3>
           <div class="plan-precio plateado">$2,000 <small>MXN</small></div>
@@ -814,6 +821,7 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none;
         </article>
 
         <article class="tarjeta plan revelar">
+          <span class="plan-cinta suave">El más recomendado para restaurantes</span>
           <p class="plan-nombre">Plan Pro</p>
           <h3 class="plan-titulo">Página Extensa a tu gusto<br>(varias páginas)</h3>
           <div class="plan-precio plateado">$3,500 <small>MXN</small></div>
@@ -835,7 +843,7 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none;
           <h3 class="plan-titulo">Web a la Medida<br>+ Actualizaciones mensuales</h3>
           <div class="plan-precio"><span class="degradado">$4,000</span> <small>MXN</small><s class="precio-antes">$4,500</s></div>
           <p class="plan-extra">+ $250 MXN al mes</p>
-          <p class="plan-oferta">Por tiempo limitado</p>
+          <p class="plan-oferta">Hasta el 2 de noviembre</p>
           <hr>
           <ul class="lista-check">
             <li>Página web completamente a la medida</li>
@@ -844,7 +852,7 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none;
             <li>Tu página siempre actualizada, sin volver a contratar cada vez</li>
             <li>Ideal para menús, promociones y productos que cambian</li>
           </ul>
-          <a class="btn btn-wa btn-bloque" href="https://wa.me/525544728735?text=Hola%20Mexa_WEB%2C%20me%20interesa%20el%20Plan%20Prioritario%20con%20descuento%3A%20%244%2C000%20MXN%20%2B%20%24250%20al%20mes" target="_blank" rel="noopener">Quiero este plan</a>
+          <a class="btn btn-wa btn-bloque" href="https://wa.me/525544728735?text=Hola%20Mexa_WEB%2C%20me%20interesa%20el%20Plan%20Prioritario%20con%20descuento%3A%20%244%2C000%20MXN%20%2B%20%24250%20al%20mes%20(antes%20del%202%20de%20noviembre)" target="_blank" rel="noopener">Quiero este plan</a>
         </article>
 
       </div>
